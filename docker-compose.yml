@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: backend
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+  frontend:
+    build: 
+      context: frontend
+      args:
+        MESSAGE: SALUT
+    env_file:
+      - .env      
+  nginx:
+    build: nginx
+    ports:
+      - 7000:7000
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres    
+    env_file:
+      - .env
+    volumes:
+      - ./dataset:/docker-entrypoint-initdb.d
