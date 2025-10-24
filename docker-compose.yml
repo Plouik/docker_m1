@@ -9,7 +9,7 @@ services:
     build: 
       context: frontend
       args:
-        MESSAGE: SALUT
+       - MESSAGE=SALUT
     env_file:
       - .env      
   nginx:
