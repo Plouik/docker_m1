@@ -1,0 +1,8 @@
+ressource_group="docker-demo"
+registry_name="omiomidemoomi"
+registry_fqdn="$registry_name.azurecr.io"
+image_to_deploy="ex4-frontend:latest"
+container_name="demo"
+dns_label="omidemoiom"
+identity="myID"
+location="France Central"
