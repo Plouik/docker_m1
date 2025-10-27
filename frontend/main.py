@@ -3,6 +3,10 @@ import os, requests
 
 app = Flask(__name__)
 
+@app.route("/health", methods=['GET'])
+def get_health():
+	return "ok"
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
 	if request.method == 'POST':
@@ -15,4 +19,4 @@ def index():
 	return render_template("index.html")
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=os.getenv('PORT_FRONTEND'))
+	app.run(host='0.0.0.0', port=80)

@@ -7,6 +7,10 @@ app = Flask(__name__)
 def get_db():
 	return ' '.join(map(str, get_records()))
 
+@app.route("/health", methods=['GET'])
+def get_health():
+	return "ok"
+
 def get_db_cursor():
   pg_connection_dict = {
     'dbname': os.getenv('POSTGRES_DB', "Please set POSTGRES_DB"),
