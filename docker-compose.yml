@@ -5,11 +5,19 @@ services:
       - .env
     depends_on:
       - postgres
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
   frontend:
     build: 
       context: frontend
       args:
         MESSAGE: SALUT
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     env_file:
       - .env      
   nginx:
