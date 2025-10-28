@@ -1,6 +1,7 @@
 source variable.sh
 
 # #user assign identity
+az provider register --namespace Microsoft.ContainerRegistry
 az group create --name "$ressource_group" --location "$location"
 az identity create --name "$identity" --resource-group "$ressource_group"
 
