@@ -5,6 +5,7 @@ creds=$(az acr credential show --resource-group "$ressource_group" --name "$regi
 username=$( echo "$creds" | jq -r '.username' )
 password=$( echo "$creds" | jq -r '.passwords[0].value' )
 
+az provider register --namespace Microsoft.ContainerInstance
 az container create --registry-username "$username" --registry-password "$password"  --resource-group "$ressource_group" --name "$container_name" --image "$registry_fqdn"/"$image_to_deploy" --dns-name-label "$dns_label" --ports 80 --os-type linux --memory 1.5 --cpu 1
 
 az container show --resource-group "$ressource_group" --name "$container_name" --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
