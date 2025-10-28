@@ -4,23 +4,11 @@ services:
     image: olivierdsm/backend:latest
     env_file:
       - .env
-    capabilities:
-          drop:
-            - ALL
-          add: ["NET_ADMIN"]
-    securityContext:
-        allowPrivilegeEscalation: false
   frontend:
     build: 
       context: frontend
       args:
         MESSAGE: SALUT
     image: olivierdsm/frontend:latest
-    capabilities:
-          drop:
-            - ALL
-          add: ["NET_ADMIN"]
-    securityContext:
-        allowPrivilegeEscalation: false
     env_file:
       - .env      

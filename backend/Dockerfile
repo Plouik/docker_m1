@@ -10,7 +10,7 @@ FROM python:3.7-alpine
 
 WORKDIR /app
 RUN addgroup -S appgroup && adduser -S app -G appgroup
-
+RUN chwn -R app:appgroup /app
 USER app
 COPY --chown=app:appgroup --from=builder /app/wheels /wheels
 COPY --chown=app:appgroup --from=builder /app/requirements.txt .
